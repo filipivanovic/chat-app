@@ -3369,3 +3369,6 @@
 /backend/node_modules/ws/README.md
 /backend/node_modules/ws/wrapper.mjs
 /backend/node_modules/.package-lock.json
+/.idea/git_toolbox_prj.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
