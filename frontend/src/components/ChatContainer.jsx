@@ -1,5 +1,7 @@
 import { useChatStore } from '../store/useChatStore.js'
 import { useEffect } from 'react'
+import ChatHeader from './ChatHeader.jsx'
+import MessageInput from './MessageInput.jsx'
 
 const ChatContainer = () => {
   const { messages, getMessages, isMessagesLoading, selectedUser } = useChatStore()
@@ -10,7 +12,15 @@ const ChatContainer = () => {
 
   if (isMessagesLoading) return <div>Loading...</div>
 
-  return <div className="flex-1 flex flex-col overflow-auto"></div>
+  return (
+    <div className="flex-1 flex flex-col overflow-auto">
+      <ChatHeader />
+
+      <p>Messages</p>
+
+      <MessageInput />
+    </div>
+  )
 }
 
 export default ChatContainer
