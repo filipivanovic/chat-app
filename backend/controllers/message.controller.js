@@ -1,12 +1,13 @@
 import User from '../models/user.model.js'
 import Message from '../models/message.model.js'
 import cloudinary from '../lib/cloudinary.js'
+import { getReceiverSockedIt, io } from '../lib/socket.js'
 
 export const getUsersForSidebar = async (req, res) => {
   try {
     const loggedUserId = req.user._id
     const filteredUsers = await User.find({
-      _id: { $ne: loggedUserId },
+      _id: { $ne: loggedUserId }
     }).select('-password')
 
     res.status(200).json(filteredUsers)
@@ -23,8 +24,8 @@ export const getMessages = async (req, res) => {
     const messages = await Message.find({
       $or: [
         { senderId: myId, receiverId: userToChat },
-        { senderId: userToChat, receiverId: myId },
-      ],
+        { senderId: userToChat, receiverId: myId }
+      ]
     })
     res.status(200).json(messages)
   } catch (error) {
@@ -49,10 +50,15 @@ export const sendMessage = async (req, res) => {
       senderId,
       receiverId,
       text,
-      image: imageUrl,
+      image: imageUrl
     })
     await newMessage.save()
-    // real-time functionality goes here ==> socket.io
+
+    const receiverSockedId = getReceiverSockedIt(receiverId)
+    if (receiverSockedId) {
+      io.to(receiverSockedId).emit('newMessage', newMessage)
+    }
+
     res.status(201).json(newMessage)
   } catch (error) {
     console.error(`Error in sendMessage: ${error.message}`)
