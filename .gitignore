@@ -3488,3 +3488,5 @@
 /backend/node_modules/prettier/standalone.js
 /backend/node_modules/prettier/standalone.mjs
 /backend/node_modules/prettier/THIRD-PARTY-NOTICES.md
+
+.env
