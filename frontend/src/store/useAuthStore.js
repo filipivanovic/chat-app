@@ -61,6 +61,8 @@ export const useAuthStore = create((set, get) => ({
     } catch (error) {
       console.error(`Error in login: ${error.message}`)
       toast.error('Login failed: ' + error.response.data.message)
+    } finally {
+      set({ isLoggingIn: false })
     }
   },
   updateProfile: async data => {
