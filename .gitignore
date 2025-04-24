@@ -3803,3 +3803,11 @@
 /backend/node_modules/chat-app/.prettierrc
 /backend/node_modules/chat-app/package.json
 /backend/node_modules/chat-app/package-lock.json
+/backend/node_modules/path-to-regexp/dist.es2015/index.js
+/backend/node_modules/path-to-regexp/dist.es2015/index.js.map
+/backend/node_modules/router/node_modules/path-to-regexp/dist/index.d.ts
+/backend/node_modules/router/node_modules/path-to-regexp/dist/index.js
+/backend/node_modules/router/node_modules/path-to-regexp/dist/index.js.map
+/backend/node_modules/router/node_modules/path-to-regexp/LICENSE
+/backend/node_modules/router/node_modules/path-to-regexp/package.json
+/backend/node_modules/router/node_modules/path-to-regexp/Readme.md
